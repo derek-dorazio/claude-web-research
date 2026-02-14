@@ -1,0 +1,11 @@
+# Claude Code settings (local/personal)
+.claude/settings/
+
+# OS files
+.DS_Store
+
+# Keep output directory structure but ignore generated content
+output/plan/*.md
+output/implement/*.md
+output/research/*.md
+!output/**/.gitkeep
