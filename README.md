@@ -21,7 +21,9 @@ analyze/
 │       ├── plan.md              # /plan — Create a research plan
 │       ├── implement.md         # /implement — Execute a research plan
 │       ├── research.md          # /research — Quick one-shot research
-│       └── summarize.md         # /summarize — Condense any output
+│       ├── summarize.md         # /summarize — Condense any output
+│       ├── slides.md            # /slides — Create PowerPoint presentations
+│       └── excel.md             # /excel — Create or read Excel workbooks
 ├── scripts/
 │   ├── list-output.sh           # List all output files by type
 │   └── clean-output.sh          # Remove old output files
@@ -30,7 +32,9 @@ analyze/
 ├── output/                      # All generated output
 │   ├── plan/                    # Research plans
 │   ├── implement/               # Full research reports
-│   └── research/                # Quick research output
+│   ├── research/                # Quick research output
+│   ├── slides/                  # PowerPoint presentations
+│   └── data/                    # Excel workbooks
 └── templates/                   # Reusable output templates
 ```
 
@@ -39,6 +43,7 @@ analyze/
 ### Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed
+- [uv](https://docs.astral.sh/uv/) installed (`brew install uv`) — needed for MCP servers (PowerPoint, Excel)
 - Open this project directory in Claude Code or VS Code with the Claude Code extension
 
 ### Quick Start
@@ -111,6 +116,53 @@ Reads any existing output file and produces a 1-page executive summary with key 
 
 **Output:** Saved alongside the original file with `-summary` appended to the filename.
 
+### `/slides` — Create PowerPoint Presentations
+
+Turns research output or a topic into a PowerPoint deck using the PowerPoint MCP server.
+
+**Usage:**
+```
+/slides output/implement/2026-02-14-ai-coding-assistants-report.md
+/slides A 10-slide overview of cloud computing trends
+```
+
+**Output:** `output/slides/YYYY-MM-DD-<topic-slug>.pptx`
+
+**What it does:**
+1. Reads existing research output or takes a topic directly
+2. Plans the slide deck structure
+3. Creates slides using the PowerPoint MCP tools (title, bullets, tables, charts)
+4. Saves the `.pptx` file to the slides output folder
+
+### `/excel` — Create or Read Excel Workbooks
+
+Creates Excel spreadsheets from research data, or reads existing `.xlsx` files. Uses the Excel MCP server.
+
+**Usage:**
+```
+/excel Create a comparison spreadsheet from output/implement/2026-02-14-ai-coding-assistants-report.md
+/excel Read and summarize input/sales-data.xlsx
+```
+
+**Output:** `output/data/YYYY-MM-DD-<topic-slug>.xlsx`
+
+**What it does:**
+1. Reads research output or takes a data description
+2. Creates workbook with named sheets, headers, and formatted data
+3. Adds formulas for calculations where appropriate
+4. Can also read existing Excel files and summarize their contents
+
+## MCP Servers
+
+This project uses MCP (Model Context Protocol) servers configured in [.mcp.json](.mcp.json):
+
+| Server | Package | Purpose |
+|---|---|---|
+| `powerpoint` | `office-powerpoint-mcp-server` | Create and edit PowerPoint presentations |
+| `excel` | `excel-mcp-server` | Read and write Excel workbooks |
+
+MCP servers run automatically when Claude Code starts in this directory. They require `uvx` (from `uv`): `brew install uv`.
+
 ## Skills
 
 Skills are reusable research techniques in `skills/` that can be applied during any research task. See [skills/README.md](skills/README.md) for full details.
@@ -138,13 +190,13 @@ Step 4:  /summarize output/implement/2026-02-14-generative-ai-testing-report.md
 ```
 
 ```
-┌─────────┐     ┌──────────┐     ┌───────────┐     ┌───────────┐
-│  /plan   │────>│  Review  │────>│/implement │────>│/summarize │
-│          │     │  & Edit  │     │           │     │(optional) │
-└─────────┘     └──────────┘     └───────────┘     └───────────┘
-     │                                  │                 │
-     v                                  v                 v
- output/plan/                   output/implement/    *-summary.md
+┌─────────┐     ┌──────────┐     ┌───────────┐     ┌───────────┐     ┌─────────┐
+│  /plan   │────>│  Review  │────>│/implement │────>│/summarize │────>│ /slides │
+│          │     │  & Edit  │     │           │     │(optional) │     │(optional)│
+└─────────┘     └──────────┘     └───────────┘     └───────────┘     └─────────┘
+     │                                  │                 │                │
+     v                                  v                 v                v
+ output/plan/                   output/implement/    *-summary.md   output/slides/
 ```
 
 ### Quick Research Workflow

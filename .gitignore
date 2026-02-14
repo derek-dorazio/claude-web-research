@@ -8,4 +8,6 @@
 output/plan/*.md
 output/implement/*.md
 output/research/*.md
+output/slides/*.pptx
+output/data/*.xlsx
 !output/**/.gitkeep

@@ -10,6 +10,8 @@ Slash commands for Claude Code. The executable command files live in `.claude/co
 | `/implement` | [implement.md](../\.claude/commands/implement.md) | Execute a research plan into a full report |
 | `/research` | [research.md](../\.claude/commands/research.md) | Quick one-shot web research |
 | `/summarize` | [summarize.md](../\.claude/commands/summarize.md) | Condense any output into a 1-page summary |
+| `/slides` | [slides.md](../\.claude/commands/slides.md) | Create a PowerPoint deck from research or a topic |
+| `/excel` | [excel.md](../\.claude/commands/excel.md) | Create or read Excel workbooks |
 
 ## How Commands Work
 
@@ -33,4 +35,8 @@ Commands are markdown prompt files stored in `.claude/commands/`. When you type 
        |
        v (optional)
 /summarize <file-path> -->  <original>-summary.md
+       |
+       v (optional)
+/slides <file-path>   -->  output/slides/<date>-<slug>.pptx
+/excel <file-or-desc> -->  output/data/<date>-<slug>.xlsx
 ```

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "powerpoint": {
+      "command": "uvx",
+      "args": ["office-powerpoint-mcp-server"],
+      "env": {}
+    },
+    "excel": {
+      "command": "uvx",
+      "args": ["excel-mcp-server"],
+      "env": {}
+    }
+  }
+}

@@ -17,7 +17,9 @@ analyze/
 ├── output/                # All generated output, organized by command
 │   ├── plan/              # Plan command output
 │   ├── implement/         # Implement command output
-│   └── research/          # Ad-hoc research output
+│   ├── research/          # Ad-hoc research output
+│   ├── slides/            # PowerPoint presentations
+│   └── data/              # Excel workbooks
 └── templates/             # Reusable templates for output formatting
 ```
 
@@ -48,3 +50,9 @@ Reusable research techniques in `skills/`. Apply during any research task:
 - `WebFetch` — Fetch and extract content from specific URLs.
 - `Read`/`Write`/`Glob`/`Grep` — Local file operations.
 - `Bash` — Run scripts from `scripts/` directory.
+
+## MCP Servers
+
+Configured in `.mcp.json` (project-scoped):
+- **powerpoint** — Create and edit PowerPoint presentations via `office-powerpoint-mcp-server`. Requires `uvx` (install: `brew install uv`).
+- **excel** — Read and write Excel workbooks via `excel-mcp-server`. Requires `uvx`.
