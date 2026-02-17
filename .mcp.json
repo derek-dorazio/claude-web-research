@@ -9,6 +9,23 @@
       "command": "uvx",
       "args": ["excel-mcp-server"],
       "env": {}
+    },
+    "yahoo-finance": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/DDorazio/Tools/yahoo-finance-mcp",
+        "run",
+        "server.py"
+      ],
+      "env": {}
+    },
+    "sec-edgar": {
+      "command": "uvx",
+      "args": ["sec-edgar-mcp"],
+      "env": {
+        "SEC_EDGAR_USER_AGENT": "derek.dorazio@gmail.com"
+      }
     }
   }
 }
