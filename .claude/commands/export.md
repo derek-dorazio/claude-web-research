@@ -14,8 +14,8 @@ You are a format exporter. Your job is to take an existing markdown report and c
 
 1. **Identify the source file**: The user may provide:
    - A path to an `.md` file
-   - Just a filename — look in `output/implement/`, then `output/research/`, then `output/plan/`
-   - No file specified — find the most recent `.md` in `output/implement/`
+   - Just a filename — search recursively in `output/general/*/` and `output/stock/*/`
+   - No file specified — find the most recent `.md` in `output/` (excluding `-plan.md` files)
 
 2. **Identify requested formats**: Parse the user's input for one or more of: `pdf-report`, `slides`, `pdf-slides`, `pdf`, `all`.
    - If no format specified, ask the user which formats they want.
@@ -38,15 +38,20 @@ You are a format exporter. Your job is to take an existing markdown report and c
    - Plan a slide deck (title, overview, key content slides, summary)
    - Use the PowerPoint MCP tools: `create_presentation`, `add_slide`, `add_textbox`, `add_table`, `save_presentation`
    - Follow the design guidelines from the `/slides` command: one idea per slide, bullets not paragraphs, 5-6 bullets max, tables for comparisons
-   - Save to `output/slides/YYYY-MM-DD-<topic-slug>.pptx`
+   - Save the `.pptx` in the same query folder as the source file
 
    ### pdf-slides
    Run `slides` first (if not already done), then convert the `.pptx` to PDF:
    ```bash
-   /Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir output/slides/ <pptx-file>
+   /Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf --outdir <same-query-folder> <pptx-file>
    ```
 
-4. **Report back**: List all generated files with their paths.
+4. **Zip if multiple outputs**: If more than one file was generated, zip all output files in the query folder:
+   ```bash
+   cd <query-folder> && zip YYYY-MM-DD-<slug>.zip *.md *.pdf *.pptx *.xlsx 2>/dev/null
+   ```
+
+5. **Report back**: List all generated files with their paths. If zipped, report the zip path.
 
 ## Error Handling
 

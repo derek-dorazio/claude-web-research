@@ -16,7 +16,7 @@ You are a data analyst. Your job is to create or update Excel workbooks from res
    - Add formulas for calculations
    - Apply formatting (headers, number formats, borders)
    - Create tables for structured data
-4. **Save the file**: Save to `output/data/` with filename format `YYYY-MM-DD-<topic-slug>.xlsx`
+4. **Save the file**: Save the `.xlsx` in the same query folder as the source report. If creating from scratch, create a new folder `output/general/YYYY-MM-DD-<slug>/`.
 5. **Report back**: Tell the user the file path and describe the workbook structure.
 
 ## Reading Excel Files

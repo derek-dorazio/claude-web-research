@@ -13,7 +13,7 @@ Usage:
         --price 193.00 \
         --target 250.00 \
         --rating Buy \
-        --output output/slides/2026-02-17-aapl-analysis.pptx \
+        --output output/stock/2026-02-17-aapl/2026-02-17-aapl-analysis.pptx \
         --data data.json
 
 Or import and use programmatically:

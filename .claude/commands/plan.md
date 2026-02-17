@@ -12,7 +12,7 @@ You are a research planner. Your job is to create a detailed, structured researc
    - Search strategy (what to search for, which sources to prioritize)
    - Expected deliverables
    - Estimated number of research steps
-4. **Save the plan**: Write the plan to `output/plan/` with filename format `YYYY-MM-DD-<topic-slug>.md`.
+4. **Save the plan**: Create a query folder `output/general/YYYY-MM-DD-<slug>/` and save the plan as `YYYY-MM-DD-<slug>-plan.md` inside it.
 5. **Report back**: Tell the user the plan file path so they can review it and pass it to `/implement`.
 
 ## Plan Template

@@ -21,22 +21,23 @@ Commands are markdown prompt files stored in `.claude/commands/`. When you type 
 
 1. Create a new `.md` file in `.claude/commands/`
 2. Include `$ARGUMENTS` where you want the user's input inserted
-3. Define the output path (should go into `output/<command-name>/`)
-4. Add a new output subdirectory if needed: `mkdir output/<command-name>`
+3. Define the output path (save into the appropriate query folder under `output/<type>/`)
+4. Follow the convention: all artifacts for one query go in `output/<type>/YYYY-MM-DD-<slug>/`
 5. Document the command in this README
 
 ## Command Workflow
 
 ```
-/plan <topic>          -->  output/plan/<date>-<slug>.md
+/plan <topic>          -->  output/general/<date>-<slug>/<date>-<slug>-plan.md
        |
        v (review & edit)
-/implement <plan-path> -->  output/implement/<date>-<slug>-report.md
+/implement <plan-path> -->  output/general/<date>-<slug>/<date>-<slug>.md
        |
        v (optional)
-/summarize <file-path> -->  <original>-summary.md
+/summarize <file-path> -->  <same-folder>/<original>-summary.md
        |
        v (optional)
-/slides <file-path>   -->  output/slides/<date>-<slug>.pptx
-/excel <file-or-desc> -->  output/data/<date>-<slug>.xlsx
+/slides <file-path>   -->  <same-folder>/<date>-<slug>.pptx
+/excel <file-or-desc> -->  <same-folder>/<date>-<slug>.xlsx
+/export <file> all    -->  <same-folder>/<date>-<slug>.zip (if 2+ files)
 ```

@@ -5,9 +5,14 @@
 .DS_Store
 
 # Keep output directory structure but ignore generated content
-output/plan/*.md
-output/implement/*.md
-output/research/*.md
-output/slides/*.pptx
-output/data/*.xlsx
+output/general/**/*.md
+output/general/**/*.pdf
+output/general/**/*.pptx
+output/general/**/*.xlsx
+output/general/**/*.zip
+output/stock/**/*.md
+output/stock/**/*.pdf
+output/stock/**/*.pptx
+output/stock/**/*.xlsx
+output/stock/**/*.zip
 !output/**/.gitkeep

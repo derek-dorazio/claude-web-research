@@ -29,12 +29,11 @@ analyze/
 │   └── clean-output.sh          # Remove old output files
 ├── input/                       # Your research topics, URLs, and questions
 │   └── example-topic.md         # Example input file
-├── output/                      # All generated output
-│   ├── plan/                    # Research plans
-│   ├── implement/               # Full research reports
-│   ├── research/                # Quick research output
-│   ├── slides/                  # PowerPoint presentations
-│   └── data/                    # Excel workbooks
+├── output/                      # All generated output, grouped by query
+│   ├── general/                 # General research (/plan, /implement, /research)
+│   │   └── YYYY-MM-DD-<slug>/  # One folder per query (all artifacts together)
+│   └── stock/                   # Stock research (/analyze-stock)
+│       └── YYYY-MM-DD-<ticker>/ # One folder per analysis
 └── templates/                   # Reusable output templates
 ```
 
@@ -53,7 +52,7 @@ analyze/
    ```
    /research What are the top JavaScript frameworks in 2026?
    ```
-3. Check your results in `output/research/`
+3. Check your results in `output/general/`
 
 ## Commands
 
@@ -67,7 +66,7 @@ Creates a structured research plan before doing any deep research. The plan incl
 /plan See input/example-topic.md
 ```
 
-**Output:** `output/plan/YYYY-MM-DD-<topic-slug>.md`
+**Output:** `output/general/YYYY-MM-DD-<slug>/YYYY-MM-DD-<slug>-plan.md`
 
 **What it does:**
 1. Reads your topic (inline text or from an input file)
@@ -81,11 +80,11 @@ Takes a plan file and executes it step by step, producing a comprehensive resear
 
 **Usage:**
 ```
-/implement output/plan/2026-02-14-ai-coding-assistants.md
-/implement 2026-02-14-ai-coding-assistants.md
+/implement output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants-plan.md
+/implement 2026-02-14-ai-coding-assistants-plan.md
 ```
 
-**Output:** `output/implement/YYYY-MM-DD-<topic-slug>-report.md`
+**Output:** Saved in the same query folder as the plan (e.g., `output/general/YYYY-MM-DD-<slug>/YYYY-MM-DD-<slug>.md`)
 
 **What it does:**
 1. Reads the plan file
@@ -103,7 +102,7 @@ Skips the plan/implement cycle for simple questions. Searches the web, fetches k
 /research What is the current market share of cloud providers?
 ```
 
-**Output:** `output/research/YYYY-MM-DD-<topic-slug>.md`
+**Output:** `output/general/YYYY-MM-DD-<slug>/YYYY-MM-DD-<slug>.md`
 
 ### `/summarize` — Condense Research Output
 
@@ -111,7 +110,7 @@ Reads any existing output file and produces a 1-page executive summary with key 
 
 **Usage:**
 ```
-/summarize output/implement/2026-02-14-ai-coding-assistants-report.md
+/summarize output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants.md
 ```
 
 **Output:** Saved alongside the original file with `-summary` appended to the filename.
@@ -122,17 +121,17 @@ Turns research output or a topic into a PowerPoint deck using the PowerPoint MCP
 
 **Usage:**
 ```
-/slides output/implement/2026-02-14-ai-coding-assistants-report.md
+/slides output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants.md
 /slides A 10-slide overview of cloud computing trends
 ```
 
-**Output:** `output/slides/YYYY-MM-DD-<topic-slug>.pptx`
+**Output:** Saved in the same query folder as the source report (e.g., `.pptx` alongside `.md`)
 
 **What it does:**
 1. Reads existing research output or takes a topic directly
 2. Plans the slide deck structure
 3. Creates slides using the PowerPoint MCP tools (title, bullets, tables, charts)
-4. Saves the `.pptx` file to the slides output folder
+4. Saves the `.pptx` file in the same folder as the source report
 
 ### `/excel` — Create or Read Excel Workbooks
 
@@ -140,11 +139,11 @@ Creates Excel spreadsheets from research data, or reads existing `.xlsx` files. 
 
 **Usage:**
 ```
-/excel Create a comparison spreadsheet from output/implement/2026-02-14-ai-coding-assistants-report.md
+/excel Create a comparison spreadsheet from output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants.md
 /excel Read and summarize input/sales-data.xlsx
 ```
 
-**Output:** `output/data/YYYY-MM-DD-<topic-slug>.xlsx`
+**Output:** Saved in the same query folder as the source report (e.g., `.xlsx` alongside `.md`)
 
 **What it does:**
 1. Reads research output or takes a data description
@@ -184,9 +183,9 @@ Best for complex topics where you want control over the research direction.
 
 ```
 Step 1:  /plan The impact of generative AI on software testing practices
-Step 2:  Review and edit the plan in output/plan/
-Step 3:  /implement output/plan/2026-02-14-generative-ai-testing.md
-Step 4:  /summarize output/implement/2026-02-14-generative-ai-testing-report.md
+Step 2:  Review and edit the plan in output/general/2026-02-14-generative-ai-testing/
+Step 3:  /implement output/general/2026-02-14-generative-ai-testing/2026-02-14-generative-ai-testing-plan.md
+Step 4:  /summarize output/general/2026-02-14-generative-ai-testing/2026-02-14-generative-ai-testing.md
 ```
 
 ```
@@ -196,7 +195,7 @@ Step 4:  /summarize output/implement/2026-02-14-generative-ai-testing-report.md
 └─────────┘     └──────────┘     └───────────┘     └───────────┘     └─────────┘
      │                                  │                 │                │
      v                                  v                 v                v
- output/plan/                   output/implement/    *-summary.md   output/slides/
+                    All output in: output/general/YYYY-MM-DD-<slug>/
 ```
 
 ### Quick Research Workflow
@@ -262,7 +261,7 @@ The current state of AI coding assistants in 2026.
 /plan See input/ai-coding-assistants.md
 ```
 
-Claude will search the web for initial context, then produce a plan like this in `output/plan/2026-02-14-ai-coding-assistants.md`:
+Claude will search the web for initial context, then produce a plan like this in `output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants-plan.md`:
 
 ```markdown
 # Research Plan: AI Coding Assistants in 2026
@@ -313,15 +312,15 @@ Open the plan file, adjust search queries, add questions, or narrow the scope. T
 ### 4. Execute the Plan
 
 ```
-/implement output/plan/2026-02-14-ai-coding-assistants.md
+/implement output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants-plan.md
 ```
 
-Claude will work through each phase, searching the web and fetching sources. The final report lands in `output/implement/2026-02-14-ai-coding-assistants-report.md` with full source citations.
+Claude will work through each phase, searching the web and fetching sources. The final report lands in `output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants.md` with full source citations.
 
 ### 5. Summarize (Optional)
 
 ```
-/summarize output/implement/2026-02-14-ai-coding-assistants-report.md
+/summarize output/general/2026-02-14-ai-coding-assistants/2026-02-14-ai-coding-assistants.md
 ```
 
 Produces a 1-page summary with key takeaways next to the original report.
@@ -332,8 +331,8 @@ Produces a 1-page summary with key takeaways next to the original report.
 
 ```bash
 ./scripts/list-output.sh           # List all output
-./scripts/list-output.sh plan      # List only plans
-./scripts/list-output.sh implement # List only reports
+./scripts/list-output.sh general   # List only general research
+./scripts/list-output.sh stock     # List only stock research
 ```
 
 ### Clean Old Output
@@ -348,7 +347,10 @@ Produces a 1-page summary with key takeaways next to the original report.
 | Convention | Detail |
 |---|---|
 | File format | All output is Markdown |
-| Naming | `YYYY-MM-DD-<topic-slug>.md` |
+| Output grouping | All artifacts from one query live in `output/<type>/YYYY-MM-DD-<slug>/` |
+| Plan naming | Plans get `-plan` suffix: `YYYY-MM-DD-<slug>-plan.md` |
+| File naming | All other files share the base name with different extensions |
+| Multi-file export | When exporting 2+ files, they are zipped into `YYYY-MM-DD-<slug>.zip` |
 | Sources | Every report includes URLs for all cited sources |
 | Cross-references | Reports link back to their source plan |
 | Input formats | `.md`, `.txt`, or `.json` files in `input/` |

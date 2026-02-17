@@ -6,8 +6,8 @@ You are a file converter. Your job is to convert a markdown `.md` file to a styl
 
 1. **Identify the file**: The user may provide:
    - A path to an `.md` file
-   - Just a filename — look in `output/implement/`, then `output/research/`, then `output/plan/`
-   - No argument — find the most recent `.md` in `output/implement/`
+   - Just a filename — search recursively in `output/general/*/` and `output/stock/*/`
+   - No argument — find the most recent `.md` in `output/` (excluding `-plan.md` files)
 2. **Convert to PDF**: Run the following command via Bash:
    ```
    pandoc <input-file> -o <output-file>.pdf --pdf-engine=weasyprint --css=<css-file-if-exists> --metadata title="<title>"

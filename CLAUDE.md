@@ -14,12 +14,11 @@ analyze/
 │   └── settings/          # Project settings
 ├── scripts/               # Helper scripts for processing
 ├── input/                 # Research topics, URLs, questions (user-provided)
-├── output/                # All generated output, organized by command
-│   ├── plan/              # Plan command output
-│   ├── implement/         # Implement command output
-│   ├── research/          # Ad-hoc research output
-│   ├── slides/            # PowerPoint presentations
-│   └── data/              # Excel workbooks
+├── output/                # All generated output, organized by research type
+│   ├── general/           # General research (/plan, /implement, /research)
+│   │   └── YYYY-MM-DD-<slug>/  # One folder per research query
+│   └── stock/             # Stock research (/analyze-stock)
+│       └── YYYY-MM-DD-<ticker>/ # One folder per stock analysis
 └── templates/             # Reusable templates for output formatting
 ```
 
@@ -39,14 +38,17 @@ Reusable research techniques in `skills/`. Apply during any research task:
 
 ## Workflow
 
-1. **Plan** — Run `/plan` with a research topic. Produces a structured markdown plan in `output/plan/`.
-2. **Implement** — Run `/implement` with a plan file path. Executes the plan steps and writes results to `output/implement/`.
-3. **Analyze Stock** — Run `/analyze-stock TICKER` for comprehensive investment research on a public company.
+1. **Plan** — Run `/plan` with a research topic. Creates a query folder in `output/general/YYYY-MM-DD-<slug>/` and saves the plan there.
+2. **Implement** — Run `/implement` with a plan file path. Executes the plan and saves the report in the same query folder.
+3. **Analyze Stock** — Run `/analyze-stock TICKER` for comprehensive investment research. Output goes to `output/stock/YYYY-MM-DD-<ticker>/`.
 
 ## Conventions
 
-- All output files use markdown format.
-- Output filenames include a date prefix: `YYYY-MM-DD-<slug>.md`
+- All output is grouped by research query in a single folder: `output/<type>/YYYY-MM-DD-<slug>/`
+- Research types: `general` (plan/implement/research), `stock` (analyze-stock). More types may be added.
+- Plan files get a `-plan` suffix: `YYYY-MM-DD-<slug>-plan.md`
+- All other files share the same base name with different extensions (`.md`, `.pdf`, `.pptx`, `.xlsx`)
+- When exporting produces multiple output files, zip them: `YYYY-MM-DD-<slug>.zip` in the query folder.
 - Plans reference their implementation output and vice versa.
 - Input files in `input/` can be `.md`, `.txt`, or `.json`.
 - When searching the web, always include source URLs in output.

@@ -31,7 +31,7 @@ You are an investment researcher. Produce a comprehensive analysis of a public c
    - Use `get_holder_info` for institutional/insider ownership
    - WebSearch for recent earnings, strategy updates, or catalysts
 
-7. **Write the report** and save to: `output/research/YYYY-MM-DD-<ticker>-analysis.md`
+7. **Write the report**: Create a query folder `output/stock/YYYY-MM-DD-<ticker>/` and save as `YYYY-MM-DD-<ticker>-analysis.md` inside it.
 
 ## Report Template
 
@@ -134,9 +134,10 @@ You are an investment researcher. Produce a comprehensive analysis of a public c
 ## After Completion
 
 Report the file path and offer next steps:
-- `/slides` to create a presentation from the report (uses `templates/stock_analysis_slides.py` template)
-- `/excel` to create a financial model spreadsheet
-- `/export pdf` to convert the report to PDF
+- `/slides` to create a presentation (saved in the same query folder, uses `templates/stock_analysis_slides.py`)
+- `/excel` to create a financial model spreadsheet (saved in the same query folder)
+- `/export pdf` to convert the report to PDF (saved in the same query folder)
+- When multiple exports are produced, zip all files in the query folder into `YYYY-MM-DD-<ticker>.zip`
 
 ## Slide Template
 
