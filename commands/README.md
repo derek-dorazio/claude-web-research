@@ -4,14 +4,23 @@ Slash commands for Claude Code. The executable command files live in `.claude/co
 
 ## Available Commands
 
+### Research
 | Command | File | Description |
 |---|---|---|
-| `/plan` | [plan.md](../\.claude/commands/plan.md) | Create a structured research plan |
-| `/implement` | [implement.md](../\.claude/commands/implement.md) | Execute a research plan into a full report |
-| `/research` | [research.md](../\.claude/commands/research.md) | Quick one-shot web research |
-| `/summarize` | [summarize.md](../\.claude/commands/summarize.md) | Condense any output into a 1-page summary |
-| `/slides` | [slides.md](../\.claude/commands/slides.md) | Create a PowerPoint deck from research or a topic |
-| `/excel` | [excel.md](../\.claude/commands/excel.md) | Create or read Excel workbooks |
+| `/plan` | [plan.md](../.claude/commands/plan.md) | Create a structured research plan |
+| `/implement` | [implement.md](../.claude/commands/implement.md) | Execute a research plan into a full report |
+| `/research` | [research.md](../.claude/commands/research.md) | Quick one-shot web research |
+| `/summarize` | [summarize.md](../.claude/commands/summarize.md) | Condense any output into a 1-page summary |
+| `/analyze-stock` | [analyze-stock.md](../.claude/commands/analyze-stock.md) | Comprehensive investment research on a public company |
+
+### Export
+| Command | File | Description |
+|---|---|---|
+| `/slides` | [slides.md](../.claude/commands/slides.md) | Create a PowerPoint deck from research or a topic |
+| `/excel` | [excel.md](../.claude/commands/excel.md) | Create or read Excel workbooks |
+| `/pdf-report` | [pdf-report.md](../.claude/commands/pdf-report.md) | Convert markdown report to PDF |
+| `/pdf-slides` | [pdf-slides.md](../.claude/commands/pdf-slides.md) | Convert PowerPoint to PDF |
+| `/export` | [export.md](../.claude/commands/export.md) | Convert report to multiple formats at once |
 
 ## How Commands Work
 
