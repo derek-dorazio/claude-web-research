@@ -56,6 +56,8 @@ analyze/
 
 ## Commands
 
+For more information, see [commands/README.md](commands/README.md).
+
 ### `/plan` — Create a Research Plan
 
 Creates a structured research plan before doing any deep research. The plan includes objectives, key questions, a phased search strategy, and expected deliverables.
@@ -164,7 +166,7 @@ MCP servers run automatically when Claude Code starts in this directory. They re
 
 ## Skills
 
-Skills are reusable research techniques in `skills/` that can be applied during any research task. See [skills/README.md](skills/README.md) for full details.
+Skills are reusable research techniques in `skills/` that can be applied during any research task. For more information, see [skills/README.md](skills/README.md).
 
 | Skill | File | Purpose |
 |---|---|---|
