@@ -14,7 +14,7 @@ You are a format exporter. Your job is to take an existing markdown report and c
 
 1. **Identify the source file**: The user may provide:
    - A path to an `.md` file
-   - Just a filename — search recursively in `output/general/*/` and `output/stock/*/`
+   - Just a filename — search recursively under `output/` (covers `general/`, `stock/`, `search-fund/industry/`, `search-fund/target/`)
    - No file specified — find the most recent `.md` in `output/` (excluding `-plan.md` files)
 
 2. **Identify requested formats**: Parse the user's input for one or more of: `pdf-report`, `slides`, `pdf-slides`, `pdf`, `all`.
@@ -27,9 +27,10 @@ You are a format exporter. Your job is to take an existing markdown report and c
    ### pdf-report
    Convert markdown to PDF:
    ```bash
-   pandoc <input.md> -o <output-dir>/<basename>.pdf --pdf-engine=weasyprint --metadata title="<title>"
+   pandoc <input.md> -o <output-dir>/<basename>.pdf --pdf-engine=weasyprint --css=templates/pdf-style.css
    ```
-   - If `templates/pdf-style.css` exists, add `--css=templates/pdf-style.css`
+   - Always pass `--css=templates/pdf-style.css` (project stylesheet: Lato, dark-blue/accent palette matching the decks, styled tables, running header/footer).
+   - Do **not** pass `--metadata title=...` — the report's own `#` H1 becomes the title (a duplicate would print otherwise). A harmless "nonempty <title>" warning is expected.
    - Save to the same directory as the source file
 
    ### slides

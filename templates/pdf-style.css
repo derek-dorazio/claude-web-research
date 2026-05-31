@@ -1,0 +1,181 @@
+/* =============================================================================
+   pdf-style.css — print stylesheet for markdown → PDF (Pandoc + WeasyPrint)
+   Used automatically by /pdf-report and /export when present (--css flag).
+
+   Brand-matched to the slide/workbook templates (dark-blue #1B2A4A + accent
+   #2E75B6). Typography: Lato (installed) with Helvetica/Arial fallbacks; Menlo
+   for code; Apple Color Emoji appended so 🚩/⚠️/●-style glyphs resolve.
+
+   Designed for the search-fund deliverables (sector primer, company profile,
+   IC memo) but generic enough for any report in this project.
+
+   TO REBRAND (colors / font / logo / cover page): see "Personalization Options"
+   in commands/search-fund-research-guide.md. Start with the :root variables below.
+   ============================================================================= */
+
+:root {
+  --ink:        #2b2b2b;
+  --dark-blue:  #1b2a4a;
+  --accent:     #2e75b6;
+  --accent-2:   #27ae60;
+  --muted:      #8a9097;
+  --rule:       #d5dbdb;
+  --row-alt:    #eef5fb;
+  --callout-bg: #fef9e7;
+  --callout-br: #f39c12;
+  --code-bg:    #f4f6f8;
+  --sans: "Lato", "Helvetica Neue", Arial, "Segoe UI", sans-serif, "Apple Color Emoji";
+  --mono: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+}
+
+/* ----- page setup: running header (doc title) + footer (page #) ----------- */
+@page {
+  size: Letter;
+  margin: 22mm 18mm 20mm 18mm;
+  @top-right {
+    content: string(doctitle);
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: var(--muted);
+    vertical-align: bottom;
+    padding-bottom: 4mm;
+  }
+  @bottom-left {
+    content: "Confidential — Not Investment Advice";
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    color: var(--muted);
+    padding-top: 4mm;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    color: var(--muted);
+    padding-top: 4mm;
+  }
+}
+
+/* ----- base typography ----------------------------------------------------- */
+html { font-size: 10.5pt; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.45;
+  hyphens: none;
+  -weasy-hyphens: none;
+}
+p { margin: 0 0 0.6em; orphans: 2; widows: 2; }
+strong { color: var(--dark-blue); }
+em { color: inherit; }
+a { color: var(--accent); text-decoration: none; word-break: break-word; }
+
+/* ----- headings ------------------------------------------------------------ */
+h1, h2, h3, h4 {
+  font-family: var(--sans);
+  color: var(--dark-blue);
+  line-height: 1.2;
+  break-after: avoid;
+  break-inside: avoid;
+  margin: 1.1em 0 0.45em;
+}
+/* The document's first H1 is the title; expose it to the running header. */
+h1 {
+  string-set: doctitle content(text);
+  font-size: 22pt;
+  font-weight: 900;
+  margin-top: 0;
+  padding-bottom: 0.25em;
+  border-bottom: 2.5px solid var(--accent);
+}
+h2 {
+  font-size: 15pt;
+  font-weight: 700;
+  padding-left: 0.45em;
+  border-left: 4px solid var(--accent);
+}
+h3 { font-size: 12pt; font-weight: 700; color: var(--accent); }
+h4 { font-size: 10.5pt; font-weight: 700; color: var(--ink); }
+
+/* The bold "meta" line just under the title (Prepared by / Date / ...) */
+h1 + p { color: var(--muted); font-size: 9.5pt; }
+
+/* ----- tables -------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.7em 0 1em;
+  font-size: 9pt;
+  break-inside: auto;
+}
+thead { display: table-header-group; }       /* repeat header across pages */
+tr { break-inside: avoid; }
+th {
+  background: var(--dark-blue);
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+  padding: 6px 9px;
+  border: 0.5px solid var(--dark-blue);
+}
+td {
+  padding: 5px 9px;
+  border: 0.5px solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--row-alt); }
+
+/* ----- blockquote as a callout box (the ⚠️ disclaimers) -------------------- */
+blockquote {
+  background: var(--callout-bg);
+  border-left: 4px solid var(--callout-br);
+  margin: 0.9em 0;
+  padding: 0.5em 0.9em;
+  font-size: 9.5pt;
+  color: #6b5a16;
+  break-inside: avoid;
+}
+blockquote p { margin: 0.2em 0; }
+
+/* ----- lists --------------------------------------------------------------- */
+ul, ol { margin: 0.3em 0 0.8em; padding-left: 1.3em; }
+li { margin: 0.18em 0; }
+li::marker { color: var(--accent); }
+
+/* ----- code ---------------------------------------------------------------- */
+code {
+  font-family: var(--mono);
+  font-size: 8.7pt;
+  background: var(--code-bg);
+  padding: 0.5px 4px;
+  border-radius: 3px;
+}
+pre {
+  background: var(--code-bg);
+  border: 0.5px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.7em 0.9em;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  break-inside: avoid;
+  overflow-wrap: break-word;
+}
+pre code { background: none; padding: 0; }
+
+/* ----- horizontal rule (section separators in the templates) --------------- */
+hr {
+  border: 0;
+  border-top: 0.75px solid var(--rule);
+  margin: 1.1em 0;
+}
+
+/* ----- pandoc title block (only shown if a title is passed; we usually rely
+         on the body H1 instead, so this is a graceful fallback) ------------- */
+header#title-block-header { margin-bottom: 1.2em; }
+h1.title { string-set: doctitle content(text); }
+p.subtitle { color: var(--muted); font-size: 12pt; margin-top: -0.3em; }
+p.author, p.date { color: var(--muted); font-size: 9.5pt; margin: 0; }
+
+/* keep a heading from being stranded at the bottom of a page */
+h1, h2, h3 { page-break-after: avoid; }
+img { max-width: 100%; }

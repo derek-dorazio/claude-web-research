@@ -13,6 +13,14 @@ Slash commands for Claude Code. The executable command files live in `.claude/co
 | `/summarize` | [summarize.md](../.claude/commands/summarize.md) | Condense any output into a 1-page summary |
 | `/analyze-stock` | [analyze-stock.md](../.claude/commands/analyze-stock.md) | Comprehensive investment research on a public company |
 
+### Search-Fund / Roll-Up Research
+| Command | File | Description |
+|---|---|---|
+| `/analyze-industry` | [analyze-industry.md](../.claude/commands/analyze-industry.md) | Roll-up thesis, fragmentation analysis, target longlist & sourcing map for a vertical |
+| `/analyze-target` | [analyze-target.md](../.claude/commands/analyze-target.md) | Screen a single acquisition candidate against the search-fund buy box |
+
+Setup: [setup-rollup-research.md](setup-rollup-research.md). Uses the `industry-fragmentation`, `rollup-thesis`, `target-screening`, and `deal-sourcing` skills plus `scripts/nppes_query.py` and `scripts/census_cbp.py`.
+
 ### Export
 | Command | File | Description |
 |---|---|---|
@@ -50,3 +58,15 @@ Commands are markdown prompt files stored in `.claude/commands/`. When you type 
 /excel <file-or-desc> -->  <same-folder>/<date>-<slug>.xlsx
 /export <file> all    -->  <same-folder>/<date>-<slug>.zip (if 2+ files)
 ```
+
+### Roll-Up Research Workflow
+
+```
+/analyze-industry <vertical>  -->  output/search-fund/industry/<date>-<slug>/
+       |                              <slug>-primer.md, -market-map.md, -deal-pipeline.xlsx
+       v (screen a longlist candidate)
+/analyze-target <company>     -->  output/search-fund/target/<date>-<slug>/
+                                      <slug>-profile.md, -ic-memo.md
+```
+
+Full guide (commands, templates, folders, data sources): [search-fund-research-guide.md](search-fund-research-guide.md).

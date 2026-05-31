@@ -19,6 +19,11 @@ You are a data analyst. Your job is to create or update Excel workbooks from res
 4. **Save the file**: Save the `.xlsx` in the same query folder as the source report. If creating from scratch, create a new folder `output/general/YYYY-MM-DD-<slug>/`.
 5. **Report back**: Tell the user the file path and describe the workbook structure.
 
+## Reusable Workbook Templates
+
+For a deal pipeline / target tracker (the "deal list" for `/analyze-industry`), use the generator
+instead of building sheets by hand: `python3 templates/deal_pipeline_xlsx.py --output <folder>/<slug>-deal-pipeline.xlsx [--data targets.json]`. It builds Dashboard / Active Targets / Passed / Contacts tabs with stage dropdowns, a Margin% formula, conditional formatting, and pipeline rollups. See `templates/README.md`.
+
 ## Reading Excel Files
 
 When asked to read an Excel file:

@@ -22,6 +22,17 @@ Reusable research skill prompts that can be referenced by commands or used stand
 | Competitor Analysis | [competitor-analysis.md](competitor-analysis.md) | Compare company against sector peers on financial metrics |
 | Valuation | [valuation.md](valuation.md) | Estimate intrinsic value using DCF, comps, or other methods |
 
+### Search-Fund / Roll-Up Research
+
+| Skill | File | Purpose |
+|---|---|---|
+| Industry Fragmentation | [industry-fragmentation.md](industry-fragmentation.md) | Quantify how fragmented a vertical is (establishment/provider counts, concentration) |
+| Roll-Up Thesis | [rollup-thesis.md](rollup-thesis.md) | Build the consolidation thesis: why-now, value-creation levers, exit pathways, risks |
+| Target Screening | [target-screening.md](target-screening.md) | Score an acquisition candidate against the search-fund buy box |
+| Deal Sourcing | [deal-sourcing.md](deal-sourcing.md) | Map brokers, marketplaces & proprietary outreach targets into a sourcing tracker |
+
+These power the `/analyze-industry` and `/analyze-target` commands. See [setup-rollup-research.md](../commands/setup-rollup-research.md).
+
 ## How Skills Work
 
 Skills are reusable prompt templates. They can be:
