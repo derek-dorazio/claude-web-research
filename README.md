@@ -30,7 +30,7 @@ Just prompt the command with what you want researched — the prompt is the prim
 
 ## Quick start
 
-**Prerequisites**: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), and [uv](https://docs.astral.sh/uv/) (`brew install uv`) for the MCP servers. For PDFs: `brew install pandoc weasyprint`. Some capabilities need extra setup ([investment](commands/setup-investment-research.md), [roll-up](commands/setup-rollup-research.md)).
+**New machine?** Follow the fresh-install guide for your interface — [CLI](docs/setup-claude-code-cli.md) or [Desktop app](docs/setup-claude-code-desktop.md). On macOS, `./scripts/setup-macos.sh` installs every dependency in one command, and `./scripts/check-prereqs.sh` verifies them. Some capabilities also need a little extra setup ([investment](commands/setup-investment-research.md), [roll-up](commands/setup-rollup-research.md)).
 
 ```
 # general
@@ -71,12 +71,15 @@ analyze/
 ## Helper scripts
 
 ```bash
-./scripts/list-output.sh [filter]   # list output (e.g. filter "search-fund", "stock")
+./scripts/setup-macos.sh [--configure-desktop]  # install all dependencies on a fresh Mac
+./scripts/check-prereqs.sh           # verify tools, Python packages, MCP clone, env vars
+./scripts/list-output.sh [filter]    # list output (e.g. filter "search-fund", "stock")
 ./scripts/clean-output.sh [days]     # remove query folders older than N days (default 30)
 ```
 
 ## Reference
 
+- Setup (new machine): [Claude Code CLI](docs/setup-claude-code-cli.md) · [Claude Code Desktop](docs/setup-claude-code-desktop.md)
 - Commands: [commands/README.md](commands/README.md) · Skills: [skills/README.md](skills/README.md) · Templates: [templates/README.md](templates/README.md)
 - Setup: [investment research](commands/setup-investment-research.md) · [roll-up research](commands/setup-rollup-research.md)
 - Deep guide: [search-fund research](commands/search-fund-research-guide.md)
