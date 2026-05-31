@@ -1,5 +1,7 @@
 # Commands
 
+← [README](../README.md) · Research guides: [general](../docs/general-research.md) · [stock](../docs/stock-research.md) · [search-fund](../docs/search-fund-research.md) · Also: [skills](../skills/README.md) · [templates](../templates/README.md)
+
 Slash commands for Claude Code. The executable command files live in `.claude/commands/` (required by Claude Code), and are documented here for easy reference.
 
 ## Available Commands

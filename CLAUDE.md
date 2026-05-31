@@ -7,6 +7,8 @@ This is a Claude Code project for structured web-based research.
 ```
 analyze/
 ├── CLAUDE.md              # Project configuration (this file)
+├── README.md              # High-level overview + links to per-capability detail pages
+├── docs/                  # Detail pages: general / stock / search-fund research
 ├── commands/              # Command reference & documentation
 ├── skills/                # Reusable research skill prompts
 ├── .claude/

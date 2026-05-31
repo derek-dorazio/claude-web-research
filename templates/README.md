@@ -1,5 +1,7 @@
 # Templates
 
+← [README](../README.md) · Research guides: [general](../docs/general-research.md) · [stock](../docs/stock-research.md) · [search-fund](../docs/search-fund-research.md) · Also: [commands](../commands/README.md) · [skills](../skills/README.md)
+
 Reusable output templates for professional-looking deliverables. Markdown templates are fill-in
 skeletons (copy and replace `<placeholders>`); Python templates are generators run from the CLI or
 imported. See [../commands/search-fund-research-guide.md](../commands/search-fund-research-guide.md)
@@ -36,7 +38,7 @@ documents its CLI flags and expected JSON shape.
 ## Branding / personalization
 
 To apply the fund's colors, font, and logo across PDFs, decks, and workbooks, follow
-**Personalization Options** in [../commands/search-fund-research-guide.md](../commands/search-fund-research-guide.md#7-personalization-options-fund-branding--logo)
+**Personalization Options** in [../commands/search-fund-research-guide.md](../commands/search-fund-research-guide.md#7-personalization-options)
 — it lists the exact variables/constants to change in `pdf-style.css`, `rollup_slides.py`,
 `stock_analysis_slides.py`, and `deal_pipeline_xlsx.py`, plus cover-page and logo snippets.
 

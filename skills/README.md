@@ -1,5 +1,7 @@
 # Skills
 
+← [README](../README.md) · Research guides: [general](../docs/general-research.md) · [stock](../docs/stock-research.md) · [search-fund](../docs/search-fund-research.md) · Also: [commands](../commands/README.md) · [templates](../templates/README.md)
+
 Reusable research skill prompts that can be referenced by commands or used standalone. Each skill is a focused technique or methodology that Claude can apply during research.
 
 ## Available Skills

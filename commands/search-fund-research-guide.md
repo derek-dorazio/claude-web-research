@@ -135,7 +135,9 @@ export CENSUS_API_KEY="..."        # https://api.census.gov/data/key_signup.html
 
 ---
 
-## 7. Personalization Options (fund branding & logo)
+## 7. Personalization Options
+
+*Apply the fund's branding — colors, font, and logo — across PDFs, decks, and workbooks.*
 
 All deliverables share one palette and font stack. When you have the fund's brand guidelines, change
 them in the places below — no other edits needed. Keep the three sources in sync so PDFs, decks, and
