@@ -36,8 +36,13 @@ General-purpose techniques in [`skills/`](../skills/README.md):
 `/plan <topic>`). If the prompt is too thin to shape the work, the command asks a few clarifying
 questions (scope, sources, focus) before proceeding — see the [clarify-scope skill](../skills/clarify-scope.md).
 
+The command derives a short **`<slug>`** from your prompt, looks for optional context in
+`input/<slug>.{md,txt,json}`, and states that path plus where it will write
+(`output/general/<date>-<slug>/`) before it starts.
+
 An input file in [`input/`](../input) (`.md`, `.txt`, or `.json`) is **optional** extra context for
-richer briefs. Recommended shape:
+richer briefs — name it `<slug>.md` to be picked up automatically, or reference any file explicitly.
+Recommended shape:
 
 ```markdown
 # <Topic>

@@ -35,7 +35,9 @@ Roll-up skills in [`skills/`](../skills/README.md) (plus reused `valuation`, `co
 
 **Your prompt is the primary input.** If it's too thin to shape the analysis (e.g. missing geography,
 sub-segment, size band, or which company exactly), the command asks a few clarifying questions first —
-see the [clarify-scope skill](../skills/clarify-scope.md).
+see the [clarify-scope skill](../skills/clarify-scope.md). It derives a **`<slug>`** from the prompt
+(e.g. `home-health-florida`), checks `input/<slug>.{md,txt,json}` for optional context, and states the
+`<slug>` and output path (`output/search-fund/{industry,target}/<date>-<slug>/`) before starting.
 
 - **Industry**: a vertical, optionally with geography — `/analyze-industry "home health agencies in Florida"`.
 - **Target**: a company name and/or a listing URL — `/analyze-target "Acme Home Health"` or a BizBuySell URL.

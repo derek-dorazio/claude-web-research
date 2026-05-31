@@ -12,9 +12,13 @@ At the **start of any research command** (`/research`, `/plan`, `/analyze-stock`
 
 1. **The prompt is the primary input.** Whatever the user typed after the command is the brief —
    parse the target (topic / ticker / vertical / company), any focus area, and any constraints from it.
-2. **`input/` is optional.** Only read a file from `input/` if the user references one, or if a file
-   in `input/` is an obvious match for the prompt. Use it as *additional context*, never a requirement.
-3. **Never block on missing input files.** Absence of an input file is normal.
+2. **Derive a `<slug>`** — a short kebab-case identifier for this search, taken from the prompt
+   (e.g. `AAPL` → `aapl`; "home health agencies in Florida" → `home-health-florida`). The `<slug>` is
+   the search's identity: it names both the optional input lookup and the output folder. It's the only
+   per-search "instance" concept in the project.
+3. **`input/` is optional.** Check `input/<slug>.{md,txt,json}` for additional context, and read any
+   file the user explicitly references. Treat whatever you find as *extra context*, never a
+   requirement — never block on a missing input file.
 
 ## Instructions
 
@@ -36,10 +40,18 @@ At the **start of any research command** (`/research`, `/plan`, `/analyze-stock`
    Offer concrete options with a recommended default first, so the user can answer in one click. Ask
    only what changes the outcome — don't interrogate, and don't re-ask anything the prompt already answered.
 
-4. **Otherwise proceed.** If the prompt is specific enough, do **not** interrupt. Briefly state the key
-   assumptions you're making (scope, sources, output) at the top of your work so the user can course-correct.
+4. **State the plan before executing.** In one line, tell the user: the derived `<slug>`, that you'll
+   check `input/<slug>` for extra context (note whether a matching file was found), and where results
+   will be saved — `output/<type>/YYYY-MM-DD-<slug>/`. For example:
+   > *"Slug: `home-health-florida`. I'll fold in `input/home-health-florida.md` if present and save the
+   > report to `output/search-fund/industry/2026-05-31-home-health-florida/`."*
+   Fold this into the same turn as any clarifying questions — it's transparency, not a separate gate.
 
-5. **Carry the brief forward.** Use the (possibly clarified) brief to drive the rest of the command.
+5. **Otherwise proceed.** If the prompt is specific enough, don't interrupt with questions; the one-line
+   plan from step 4 plus a brief note of key assumptions (scope, sources, output) is enough.
+
+6. **Carry the brief forward.** Use the (possibly clarified) brief and the `<slug>` to drive the rest
+   of the command.
 
 ## Notes
 - Prefer one well-designed `AskUserQuestion` call with a few questions over multiple round-trips.

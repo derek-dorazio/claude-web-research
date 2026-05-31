@@ -60,7 +60,8 @@ Reusable research techniques in `skills/`. Apply during any research task:
 
 ## Conventions
 
-- All output is grouped by research query in a single folder: `output/<type>/YYYY-MM-DD-<slug>/`
+- Each search is one topic, identified by a `<slug>` derived from the prompt (the only per-search "instance" concept). Commands check `input/<slug>.{md,txt,json}` for optional context and announce the read/write paths before starting — see the `clarify-scope` skill.
+- All output is grouped by search in a single folder: `output/<type>/YYYY-MM-DD-<slug>/`
 - Research types: `general` (plan/implement/research), `stock` (analyze-stock), and `search-fund/industry` + `search-fund/target` (analyze-industry / analyze-target). Roll-up types are grouped under the `search-fund/` parent. More types may be added.
 - Reusable output templates live in `templates/` — markdown skeletons (`industry-primer.md`, `market-map.md`, `company-profile.md`, `ic-memo.md`) and Python generators (`deal_pipeline_xlsx.py`, `rollup_slides.py`, `stock_analysis_slides.py`).
 - Plan files get a `-plan` suffix: `YYYY-MM-DD-<slug>-plan.md`

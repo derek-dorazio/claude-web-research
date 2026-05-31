@@ -38,6 +38,9 @@ servers, so no input file is needed (an `input/` file is optional extra context)
 ambiguous (unclear ticker, focus, horizon, or peer set), the command asks a couple of clarifying
 questions first — see the [clarify-scope skill](../skills/clarify-scope.md).
 
+The command derives a **`<slug>`** (the ticker, e.g. `aapl`), checks `input/<slug>.{md,txt,json}` for
+optional context, and states the `<slug>` and output path (`output/stock/<date>-<ticker>/`) before starting.
+
 ## Output structure
 One folder per analysis under `output/stock/`:
 ```
