@@ -4,7 +4,7 @@ You are a search-fund analyst. Produce a roll-up / consolidation thesis for a fr
 
 ## Instructions
 
-1. **Parse the request**: The user provides a vertical and optional geography (e.g. "home health agencies in Florida", "residential HVAC", "dental support organizations Texas"). If they reference an `input/` file, read it. Derive the slug `YYYY-MM-DD-<vertical>-<geo>`.
+1. **Intake & clarify scope** — Apply the `clarify-scope` skill. The user's prompt is the primary input: a vertical and optional geography (e.g. "home health agencies in Florida", "residential HVAC", "dental support organizations Texas"); an `input/` file is optional extra context (read it only if referenced or an obvious match). If shaping is missing — geography, sub-segment, target size band, or which sources to lean on — ask a couple of clarifying questions before proceeding; otherwise state your assumptions and continue. Derive the slug `YYYY-MM-DD-<vertical>-<geo>`.
 
 2. **Map to codes**: Determine the NAICS code (any services vertical) and, for healthcare, the NPPES taxonomy description. State your mapping so the user can correct it.
 

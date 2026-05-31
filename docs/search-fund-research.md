@@ -33,7 +33,10 @@ Roll-up skills in [`skills/`](../skills/README.md) (plus reused `valuation`, `co
 | [target-screening](../skills/target-screening.md) | Score a candidate against the buy box; red flags |
 | [deal-sourcing](../skills/deal-sourcing.md) | Map brokers, marketplaces & proprietary outreach into a tracker |
 
-## Input structure
+**Your prompt is the primary input.** If it's too thin to shape the analysis (e.g. missing geography,
+sub-segment, size band, or which company exactly), the command asks a few clarifying questions first —
+see the [clarify-scope skill](../skills/clarify-scope.md).
+
 - **Industry**: a vertical, optionally with geography — `/analyze-industry "home health agencies in Florida"`.
 - **Target**: a company name and/or a listing URL — `/analyze-target "Acme Home Health"` or a BizBuySell URL.
 - Optional [`input/`](../input) file for detailed briefs; paste exports from paid platforms (Grata, PitchBook, etc.) into `input/` to fold them in.

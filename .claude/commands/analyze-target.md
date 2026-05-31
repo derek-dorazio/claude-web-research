@@ -4,7 +4,7 @@ You are a search-fund analyst. Screen a single acquisition candidate against the
 
 ## Instructions
 
-1. **Parse the request**: The user provides a company name and optionally a listing URL or an `input/` file with financials (e.g. `/analyze-target "Acme Home Health"`, or a BizBuySell URL). Derive the slug `YYYY-MM-DD-<company>`.
+1. **Intake & clarify scope** — Apply the `clarify-scope` skill. The user's prompt is the primary input: a company name and optionally a listing URL (e.g. `/analyze-target "Acme Home Health"`, or a BizBuySell URL); an `input/` file with financials is optional extra context. If shaping is missing — which company exactly, the vertical/thesis it maps to, or whether to weigh it as a platform vs. add-on — ask a couple of clarifying questions before proceeding; otherwise state your assumptions and continue. Derive the slug `YYYY-MM-DD-<company>`.
 
 2. **Gather inputs**:
    - If a listing URL is provided, WebFetch it for revenue, SDE/EBITDA, asking price, and business description.

@@ -32,6 +32,7 @@ analyze/
 ## Skills
 
 Reusable research techniques in `skills/`. Apply during any research task:
+- **clarify-scope** — Take the user's prompt as the primary input (input files optional); interview the user with a few targeted questions when the prompt is too thin to shape the research
 - **evaluate-sources** — Assess source credibility (authority, currency, accuracy, purpose)
 - **compare** — Structured comparison matrices with strengths/weaknesses
 - **fact-check** — Verify claims against multiple independent sources

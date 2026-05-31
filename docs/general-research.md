@@ -32,8 +32,12 @@ General-purpose techniques in [`skills/`](../skills/README.md):
 | [deep-dive](../skills/deep-dive.md) | Thorough investigation of a single source/subtopic |
 
 ## Input structure
-Provide a topic inline (`/plan <topic>`) or, for richer context, an input file in [`input/`](../input)
-(`.md`, `.txt`, or `.json`). Recommended shape:
+**Your prompt is the primary input** — just describe what you want researched (`/research <question>`,
+`/plan <topic>`). If the prompt is too thin to shape the work, the command asks a few clarifying
+questions (scope, sources, focus) before proceeding — see the [clarify-scope skill](../skills/clarify-scope.md).
+
+An input file in [`input/`](../input) (`.md`, `.txt`, or `.json`) is **optional** extra context for
+richer briefs. Recommended shape:
 
 ```markdown
 # <Topic>

@@ -10,6 +10,7 @@ Reusable research skill prompts that can be referenced by commands or used stand
 
 | Skill | File | Purpose |
 |---|---|---|
+| Clarify Scope (Intake) | [clarify-scope.md](clarify-scope.md) | Take the prompt as primary input; ask a few clarifying questions when it's underspecified |
 | Source Evaluation | [evaluate-sources.md](evaluate-sources.md) | Assess credibility and reliability of sources |
 | Compare & Contrast | [compare.md](compare.md) | Structured comparison of multiple options/tools/approaches |
 | Fact Check | [fact-check.md](fact-check.md) | Verify claims against multiple sources |

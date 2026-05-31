@@ -32,8 +32,11 @@ Investment skills in [`skills/`](../skills/README.md) (plus general skills like 
 | [valuation](../skills/valuation.md) | DCF, comparable-company, and weighted fair value |
 
 ## Input structure
-A ticker, optionally with a focus area, e.g. `/analyze-stock AAPL`, `/analyze-stock MSFT valuation`,
-`/analyze-stock GOOGL vs competitors`. No input file needed; data is pulled live from the MCP servers.
+**Your prompt is the primary input**: a ticker, optionally with a focus area — e.g. `/analyze-stock AAPL`,
+`/analyze-stock MSFT valuation`, `/analyze-stock GOOGL vs competitors`. Data is pulled live from the MCP
+servers, so no input file is needed (an `input/` file is optional extra context). If the request is
+ambiguous (unclear ticker, focus, horizon, or peer set), the command asks a couple of clarifying
+questions first — see the [clarify-scope skill](../skills/clarify-scope.md).
 
 ## Output structure
 One folder per analysis under `output/stock/`:

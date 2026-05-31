@@ -18,8 +18,10 @@ commands, skills, input/output structure, templates, and data sources.
 ## How it works
 
 ```
-input/ (topic, ticker, vertical)  →  /command  →  applies skills + web/MCP tools  →  output/<type>/<date>-<slug>/  →  /export (pptx · xlsx · pdf)
+your prompt (topic · ticker · vertical)  →  /command clarifies scope if needed  →  applies skills + web/MCP tools  →  output/<type>/<date>-<slug>/  →  /export (pptx · xlsx · pdf)
 ```
+
+Just prompt the command with what you want researched — the prompt is the primary input, and a command will ask a few clarifying questions if it needs more shaping. An `input/` file is optional for adding extra context.
 
 - **Commands** (`/plan`, `/analyze-stock`, `/analyze-industry`, …) orchestrate the work — see [commands/README.md](commands/README.md).
 - **Skills** are reusable techniques (source evaluation, valuation, fragmentation analysis, …) — see [skills/README.md](skills/README.md).

@@ -4,7 +4,7 @@ You are a web researcher. This is a quick, single-pass research command for when
 
 ## Instructions
 
-1. **Understand the query**: Read the user's research question.
+1. **Intake & clarify scope** — Apply the `clarify-scope` skill. The user's prompt is the primary input (an `input/` file is optional extra context). If the prompt is too thin to shape the search, ask a few clarifying questions (scope, sources, focus) before proceeding; otherwise state your assumptions briefly and continue.
 2. **Search the web**: Use `WebSearch` to find relevant, current information. Run multiple searches if needed to cover the topic.
 3. **Fetch key sources**: Use `WebFetch` on the most authoritative/relevant results to get detailed information.
 4. **Write a concise report**: Create a query folder `output/general/YYYY-MM-DD-<slug>/` and save findings as `YYYY-MM-DD-<slug>.md` inside it.

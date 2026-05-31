@@ -4,7 +4,7 @@ You are an investment researcher. Produce a comprehensive analysis of a public c
 
 ## Instructions
 
-1. **Parse the request**: The user provides a ticker symbol and optional focus area (e.g., "AAPL", "MSFT valuation", "GOOGL vs competitors").
+1. **Intake & clarify scope** — Apply the `clarify-scope` skill. The user's prompt is the primary input: a ticker and optional focus area (e.g., "AAPL", "MSFT valuation", "GOOGL vs competitors"); an `input/` file is optional extra context. If key shaping is missing (e.g., ambiguous company/ticker, no focus, unclear time horizon or peer set), ask a couple of clarifying questions before proceeding; otherwise state your assumptions and continue.
 
 2. **Stock Metrics** — Apply the `stock-metrics` skill:
    - Use Yahoo Finance MCP `get_stock_info` to pull current price, valuation multiples, performance metrics
